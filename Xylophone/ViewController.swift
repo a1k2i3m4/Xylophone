@@ -17,10 +17,18 @@ class ViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        // Do any additional setup after loading the view.
     }
 
     @IBAction func buttonPressed(_ sender: UIButton) {
+        UIView.animate(withDuration: 0.1,
+                           animations: {
+                sender.transform = CGAffineTransform(scaleX: 0.9, y: 0.9)
+            }) { (finished) in
+                UIView.animate(withDuration: 0.1) {
+                    sender.transform = CGAffineTransform.identity
+                }
+            }
+        
         var selectedSound = notes[(sender.tag)-1];
         playingSound(chosedSound: selectedSound)
         
